@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import Navbar from '@/components/Navbar.vue'
+import AppNavbar from '@/components/AppNavbar.vue'
 import HeroSection from '@/components/HeroSection.vue'
 import AboutSection from '@/components/AboutSection.vue'
 import ExperienceSection from '@/components/ExperienceSection.vue'
 import SkillsSection from '@/components/SkillsSection.vue'
 import EducationSection from '@/components/EducationSection.vue'
 import ContactSection from '@/components/ContactSection.vue'
-import Footer from '@/components/Footer.vue'
+import AppFooter from '@/components/AppFooter.vue'
 </script>
 
 <template>
-  <Navbar />
+  <AppNavbar />
   <main>
     <HeroSection />
     <AboutSection />
@@ -19,7 +19,7 @@ import Footer from '@/components/Footer.vue'
     <EducationSection />
     <ContactSection />
   </main>
-  <Footer />
+  <AppFooter />
 </template>
 
 <style scoped>

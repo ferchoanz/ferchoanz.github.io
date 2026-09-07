@@ -1,5 +1,15 @@
 <script setup lang="ts">
+import { computed, ref } from 'vue'
 import { experiences } from '@/data/cv'
+
+const INITIAL_COUNT = 3
+const expanded = ref(false)
+
+const visibleExperiences = computed(() => {
+  return expanded.value ? experiences : experiences.slice(0, INITIAL_COUNT)
+})
+
+const hasMore = experiences.length > INITIAL_COUNT
 </script>
 
 <template>
@@ -10,7 +20,7 @@ import { experiences } from '@/data/cv'
         <h2 class="section-title">Trayectoria profesional</h2>
       </div>
       <div class="timeline">
-        <div v-for="(job, index) in experiences" :key="index" class="timeline-item">
+        <div v-for="(job, index) in visibleExperiences" :key="index" class="timeline-item">
           <div class="timeline-marker"></div>
           <div class="timeline-content">
             <span class="timeline-period">{{ job.period }}</span>
@@ -21,6 +31,11 @@ import { experiences } from '@/data/cv'
             </ul>
           </div>
         </div>
+      </div>
+      <div v-if="hasMore" class="expand-actions">
+        <button class="btn btn-outline" @click="expanded = !expanded">
+          {{ expanded ? 'Ver menos' : 'Ver más experiencia' }}
+        </button>
       </div>
     </div>
   </section>
@@ -108,6 +123,12 @@ import { experiences } from '@/data/cv'
 
 .timeline-list li {
   margin-bottom: 0.5rem;
+}
+
+.expand-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
 }
 
 @media (max-width: 768px) {

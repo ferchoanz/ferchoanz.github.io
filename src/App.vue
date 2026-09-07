@@ -1,11 +1,29 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Navbar from '@/components/Navbar.vue'
+import HeroSection from '@/components/HeroSection.vue'
+import AboutSection from '@/components/AboutSection.vue'
+import ExperienceSection from '@/components/ExperienceSection.vue'
+import SkillsSection from '@/components/SkillsSection.vue'
+import EducationSection from '@/components/EducationSection.vue'
+import ContactSection from '@/components/ContactSection.vue'
+import Footer from '@/components/Footer.vue'
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <Navbar />
+  <main>
+    <HeroSection />
+    <AboutSection />
+    <ExperienceSection />
+    <SkillsSection />
+    <EducationSection />
+    <ContactSection />
+  </main>
+  <Footer />
 </template>
 
-<style scoped></style>
+<style scoped>
+main {
+  flex: 1;
+}
+</style>

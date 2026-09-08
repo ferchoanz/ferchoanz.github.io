@@ -14,11 +14,11 @@ function detectLocale(): Locale {
   }
 
   const browserLang = navigator.language.toLowerCase()
-  if (browserLang.startsWith('en')) {
-    return 'en'
+  if (browserLang.startsWith('es')) {
+    return 'es'
   }
 
-  return DEFAULT_LOCALE
+  return 'en'
 }
 
 const i18n = createI18n({

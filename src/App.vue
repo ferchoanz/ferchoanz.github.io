@@ -16,6 +16,7 @@ watch(
   locale,
   (newLocale) => {
     document.documentElement.lang = newLocale
+    localStorage.setItem('preferred-lang', newLocale)
   },
   { immediate: true },
 )

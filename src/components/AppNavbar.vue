@@ -36,10 +36,6 @@ function setLanguage(lang: Locale) {
 }
 
 onMounted(() => {
-  const saved = localStorage.getItem('preferred-lang') as Locale | null
-  if (saved && languages.some((l) => l.value === saved)) {
-    locale.value = saved
-  }
   window.addEventListener('scroll', handleScroll)
 })
 

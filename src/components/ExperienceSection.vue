@@ -1,23 +1,27 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { experiences } from '@/data/cv'
+import { useI18n } from 'vue-i18n'
+import { useCv } from '@/composables/useCv'
+
+const { t } = useI18n()
+const cv = useCv()
 
 const INITIAL_COUNT = 3
 const expanded = ref(false)
 
 const visibleExperiences = computed(() => {
-  return expanded.value ? experiences : experiences.slice(0, INITIAL_COUNT)
+  return expanded.value ? cv.value.experiences : cv.value.experiences.slice(0, INITIAL_COUNT)
 })
 
-const hasMore = experiences.length > INITIAL_COUNT
+const hasMore = cv.value.experiences.length > INITIAL_COUNT
 </script>
 
 <template>
   <section id="experience" class="experience section">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Experiencia</span>
-        <h2 class="section-title">Trayectoria profesional</h2>
+        <span class="section-tag">{{ t('experience.tag') }}</span>
+        <h2 class="section-title">{{ t('experience.title') }}</h2>
       </div>
       <div class="timeline">
         <div v-for="(job, index) in visibleExperiences" :key="index" class="timeline-item">
@@ -34,7 +38,7 @@ const hasMore = experiences.length > INITIAL_COUNT
       </div>
       <div v-if="hasMore" class="expand-actions">
         <button class="btn btn-outline" @click="expanded = !expanded">
-          {{ expanded ? 'Ver menos' : 'Ver más experiencia' }}
+          {{ expanded ? t('experience.collapse') : t('experience.expand') }}
         </button>
       </div>
     </div>

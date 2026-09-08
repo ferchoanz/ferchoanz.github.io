@@ -189,3 +189,14 @@ export const languages = [
   { name: 'Español', level: 'Nativo' },
   { name: 'Inglés', level: 'Intermedio (B1)' },
 ]
+
+const cvData = {
+  personalInfo,
+  experiences,
+  education,
+  skillCategories,
+  softSkills,
+  languages,
+}
+
+export default cvData

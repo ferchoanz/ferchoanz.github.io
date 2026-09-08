@@ -1,22 +1,23 @@
 <script setup lang="ts">
-import { personalInfo } from '@/data/cv'
+import { useI18n } from 'vue-i18n'
+import { useCv } from '@/composables/useCv'
+
+const { t } = useI18n()
+const cv = useCv()
 </script>
 
 <template>
   <section id="contact" class="contact section">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Contacto</span>
-        <h2 class="section-title">Hablemos</h2>
+        <span class="section-tag">{{ t('contact.tag') }}</span>
+        <h2 class="section-title">{{ t('contact.title') }}</h2>
       </div>
       <div class="contact-grid">
         <div class="contact-info">
-          <p>
-            Si estás interesado en trabajar conmigo o tienes alguna oportunidad, no dudes en
-            contactarme.
-          </p>
+          <p>{{ t('contact.description') }}</p>
           <div class="contact-links">
-            <a :href="`tel:${personalInfo.phone.replace(/\s/g, '')}`" class="contact-item">
+            <a :href="`tel:${cv.personalInfo.phone.replace(/\s/g, '')}`" class="contact-item">
               <span class="contact-icon">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -34,9 +35,9 @@ import { personalInfo } from '@/data/cv'
                   />
                 </svg>
               </span>
-              <span>{{ personalInfo.phone }}</span>
+              <span>{{ cv.personalInfo.phone }}</span>
             </a>
-            <a :href="personalInfo.github" target="_blank" rel="noopener" class="contact-item">
+            <a :href="cv.personalInfo.github" target="_blank" rel="noopener" class="contact-item">
               <span class="contact-icon">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +58,7 @@ import { personalInfo } from '@/data/cv'
               <span>GitHub</span>
             </a>
             <a
-              :href="personalInfo.linkedin"
+              :href="cv.personalInfo.linkedin"
               target="_blank"
               rel="noopener"
               class="contact-item"
@@ -81,7 +82,7 @@ import { personalInfo } from '@/data/cv'
               </span>
               <span>LinkedIn</span>
             </a>
-            <a :href="`mailto:${personalInfo.email}`" class="contact-item">
+            <a :href="`mailto:${cv.personalInfo.email}`" class="contact-item">
               <span class="contact-icon">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +99,7 @@ import { personalInfo } from '@/data/cv'
                   <polyline points="22,6 12,13 2,6" />
                 </svg>
               </span>
-              <span>{{ personalInfo.email }}</span>
+              <span>{{ cv.personalInfo.email }}</span>
             </a>
           </div>
         </div>

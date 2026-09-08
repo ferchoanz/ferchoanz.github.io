@@ -1,16 +1,25 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+import type { Locale } from '@/i18n'
+
+const { t, locale } = useI18n()
 
 const isScrolled = ref(false)
 const mobileMenuOpen = ref(false)
 
-const navLinks = [
-  { label: 'Inicio', href: '#home' },
-  { label: 'Sobre mí', href: '#about' },
-  { label: 'Experiencia', href: '#experience' },
-  { label: 'Habilidades', href: '#skills' },
-  { label: 'Educación', href: '#education' },
-  { label: 'Contacto', href: '#contact' },
+const navLinks = computed(() => [
+  { label: t('nav.home'), href: '#home' },
+  { label: t('nav.about'), href: '#about' },
+  { label: t('nav.experience'), href: '#experience' },
+  { label: t('nav.skills'), href: '#skills' },
+  { label: t('nav.education'), href: '#education' },
+  { label: t('nav.contact'), href: '#contact' },
+])
+
+const languages: { label: string; value: Locale }[] = [
+  { label: 'ES', value: 'es' },
+  { label: 'EN', value: 'en' },
 ]
 
 function handleScroll() {
@@ -21,7 +30,16 @@ function closeMenu() {
   mobileMenuOpen.value = false
 }
 
+function setLanguage(lang: Locale) {
+  locale.value = lang
+  localStorage.setItem('preferred-lang', lang)
+}
+
 onMounted(() => {
+  const saved = localStorage.getItem('preferred-lang') as Locale | null
+  if (saved && languages.some((l) => l.value === saved)) {
+    locale.value = saved
+  }
   window.addEventListener('scroll', handleScroll)
 })
 
@@ -35,18 +53,36 @@ onUnmounted(() => {
     <div class="container navbar-inner">
       <a href="#home" class="logo">Ferchoanz</a>
 
-      <button class="mobile-toggle" aria-label="Abrir menú" :aria-expanded="mobileMenuOpen"
-        @click="mobileMenuOpen = !mobileMenuOpen">
-        <span :class="{ open: mobileMenuOpen }"></span>
-        <span :class="{ open: mobileMenuOpen }"></span>
-        <span :class="{ open: mobileMenuOpen }"></span>
-      </button>
+      <div class="nav-right">
+        <button
+          class="mobile-toggle"
+          aria-label="Abrir menú"
+          :aria-expanded="mobileMenuOpen"
+          @click="mobileMenuOpen = !mobileMenuOpen"
+        >
+          <span :class="{ open: mobileMenuOpen }"></span>
+          <span :class="{ open: mobileMenuOpen }"></span>
+          <span :class="{ open: mobileMenuOpen }"></span>
+        </button>
 
-      <ul class="nav-links" :class="{ open: mobileMenuOpen }">
-        <li v-for="link in navLinks" :key="link.href">
-          <a :href="link.href" @click="closeMenu">{{ link.label }}</a>
-        </li>
-      </ul>
+        <ul class="nav-links" :class="{ open: mobileMenuOpen }">
+          <li v-for="link in navLinks" :key="link.href">
+            <a :href="link.href" @click="closeMenu">{{ link.label }}</a>
+          </li>
+        </ul>
+
+        <div class="language-switcher">
+          <button
+            v-for="lang in languages"
+            :key="lang.value"
+            class="lang-btn"
+            :class="{ active: locale === lang.value }"
+            @click="setLanguage(lang.value)"
+          >
+            {{ lang.label }}
+          </button>
+        </div>
+      </div>
     </div>
   </nav>
 </template>
@@ -81,8 +117,10 @@ onUnmounted(() => {
   text-decoration: none;
 }
 
-.logo span {
-  color: var(--color-primary);
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 
 .nav-links {
@@ -102,6 +140,33 @@ onUnmounted(() => {
 
 .nav-links a:hover {
   color: var(--color-primary);
+}
+
+.language-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+  background-color: var(--color-surface);
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  font-size: 0.75rem;
+  padding: 0.375rem 0.625rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.lang-btn.active {
+  background-color: var(--color-primary);
+  color: #0f172a;
 }
 
 .mobile-toggle {
@@ -139,6 +204,10 @@ onUnmounted(() => {
     display: flex;
   }
 
+  .nav-right {
+    gap: 1rem;
+  }
+
   .nav-links {
     position: absolute;
     top: 100%;
@@ -167,6 +236,10 @@ onUnmounted(() => {
   .nav-links a {
     display: block;
     padding: 1rem;
+  }
+
+  .language-switcher {
+    order: -1;
   }
 }
 </style>

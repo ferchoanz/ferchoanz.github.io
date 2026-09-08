@@ -1,16 +1,20 @@
 <script setup lang="ts">
-import { education } from '@/data/cv'
+import { useI18n } from 'vue-i18n'
+import { useCv } from '@/composables/useCv'
+
+const { t } = useI18n()
+const cv = useCv()
 </script>
 
 <template>
   <section id="education" class="education section">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Educación</span>
-        <h2 class="section-title">Formación académica</h2>
+        <span class="section-tag">{{ t('education.tag') }}</span>
+        <h2 class="section-title">{{ t('education.title') }}</h2>
       </div>
       <div class="education-grid">
-        <div v-for="(item, index) in education" :key="index" class="education-card">
+        <div v-for="(item, index) in cv.education" :key="index" class="education-card">
           <div class="education-icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"

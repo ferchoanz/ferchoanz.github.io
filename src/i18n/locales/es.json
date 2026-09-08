@@ -1,0 +1,49 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre mí",
+    "experience": "Experiencia",
+    "skills": "Habilidades",
+    "education": "Educación",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "greeting": "Hola, soy",
+    "contact": "Contáctame",
+    "linkedin": "LinkedIn"
+  },
+  "about": {
+    "tag": "Sobre mí",
+    "title": "Conóceme un poco más",
+    "extra": "A lo largo de mi carrera he trabajado con diversas tecnologías y equipos, lo que me ha permitido adaptarme rápidamente a nuevos desafíos y entregar soluciones robustas tanto en frontend como en backend.",
+    "stats": {
+      "experience": "Años de experiencia",
+      "companies": "Empresas",
+      "role": "Full Stack Developer"
+    }
+  },
+  "experience": {
+    "tag": "Experiencia",
+    "title": "Trayectoria profesional",
+    "expand": "Ver más experiencia",
+    "collapse": "Ver menos"
+  },
+  "skills": {
+    "tag": "Habilidades",
+    "title": "Tecnologías y competencias",
+    "soft": "Habilidades blandas",
+    "languages": "Idiomas"
+  },
+  "education": {
+    "tag": "Educación",
+    "title": "Formación académica"
+  },
+  "contact": {
+    "tag": "Contacto",
+    "title": "Hablemos",
+    "description": "Si estás interesado en trabajar conmigo o tienes alguna oportunidad, no dudes en contactarme."
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados."
+  }
+}

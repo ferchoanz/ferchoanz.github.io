@@ -1,19 +1,23 @@
 <script setup lang="ts">
-import { personalInfo } from '@/data/cv'
+import { useI18n } from 'vue-i18n'
+import { useCv } from '@/composables/useCv'
+
+const { t } = useI18n()
+const cv = useCv()
 </script>
 
 <template>
   <section id="home" class="hero">
     <div class="container hero-content">
       <div class="hero-text">
-        <p class="hero-greeting">Hola, soy</p>
-        <h1 class="hero-name">{{ personalInfo.name }}</h1>
-        <h2 class="hero-title">{{ personalInfo.title }}</h2>
-        <p class="hero-description">{{ personalInfo.about }}</p>
+        <p class="hero-greeting">{{ t('hero.greeting') }}</p>
+        <h1 class="hero-name">{{ cv.personalInfo.name }}</h1>
+        <h2 class="hero-title">{{ cv.personalInfo.title }}</h2>
+        <p class="hero-description">{{ cv.personalInfo.about }}</p>
         <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">Contáctame</a>
-          <a :href="personalInfo.linkedin" target="_blank" rel="noopener" class="btn btn-outline">
-            LinkedIn
+          <a href="#contact" class="btn btn-primary">{{ t('hero.contact') }}</a>
+          <a :href="cv.personalInfo.linkedin" target="_blank" rel="noopener" class="btn btn-outline">
+            {{ t('hero.linkedin') }}
           </a>
         </div>
       </div>

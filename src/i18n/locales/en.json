@@ -1,0 +1,49 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "experience": "Experience",
+    "skills": "Skills",
+    "education": "Education",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "contact": "Contact me",
+    "linkedin": "LinkedIn"
+  },
+  "about": {
+    "tag": "About",
+    "title": "Get to know me a little more",
+    "extra": "Throughout my career I have worked with various technologies and teams, which has allowed me to quickly adapt to new challenges and deliver robust solutions in both frontend and backend.",
+    "stats": {
+      "experience": "Years of experience",
+      "companies": "Companies",
+      "role": "Full Stack Developer"
+    }
+  },
+  "experience": {
+    "tag": "Experience",
+    "title": "Professional trajectory",
+    "expand": "Show more experience",
+    "collapse": "Show less"
+  },
+  "skills": {
+    "tag": "Skills",
+    "title": "Technologies and competencies",
+    "soft": "Soft skills",
+    "languages": "Languages"
+  },
+  "education": {
+    "tag": "Education",
+    "title": "Academic background"
+  },
+  "contact": {
+    "tag": "Contact",
+    "title": "Let's talk",
+    "description": "If you are interested in working with me or have any opportunity, feel free to contact me."
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  }
+}

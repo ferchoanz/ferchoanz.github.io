@@ -1,35 +1,35 @@
 <script setup lang="ts">
-import { personalInfo } from '@/data/cv'
+import { useI18n } from 'vue-i18n'
+import { useCv } from '@/composables/useCv'
+
+const { t } = useI18n()
+const cv = useCv()
 </script>
 
 <template>
   <section id="about" class="about section">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Sobre mí</span>
-        <h2 class="section-title">Conóceme un poco más</h2>
+        <span class="section-tag">{{ t('about.tag') }}</span>
+        <h2 class="section-title">{{ t('about.title') }}</h2>
       </div>
       <div class="about-grid">
         <div class="about-text">
-          <p>{{ personalInfo.about }}</p>
-          <p>
-            A lo largo de mi carrera he trabajado con diversas tecnologías y equipos, lo que me ha
-            permitido adaptarme rápidamente a nuevos desafíos y entregar soluciones robustas tanto
-            en frontend como en backend.
-          </p>
+          <p>{{ cv.personalInfo.about }}</p>
+          <p>{{ t('about.extra') }}</p>
         </div>
         <div class="about-stats">
           <div class="stat">
             <span class="stat-number">10+</span>
-            <span class="stat-label">Años de experiencia</span>
+            <span class="stat-label">{{ t('about.stats.experience') }}</span>
           </div>
           <div class="stat">
             <span class="stat-number">12</span>
-            <span class="stat-label">Empresas</span>
+            <span class="stat-label">{{ t('about.stats.companies') }}</span>
           </div>
           <div class="stat">
             <span class="stat-number">Full</span>
-            <span class="stat-label">Stack Developer</span>
+            <span class="stat-label">{{ t('about.stats.role') }}</span>
           </div>
         </div>
       </div>

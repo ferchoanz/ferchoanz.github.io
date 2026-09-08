@@ -1,16 +1,20 @@
 <script setup lang="ts">
-import { personalInfo } from '@/data/cv'
+import { useI18n } from 'vue-i18n'
+import { useCv } from '@/composables/useCv'
+
+const { t } = useI18n()
+const cv = useCv()
 </script>
 
 <template>
   <footer class="footer">
     <div class="container footer-inner">
       <p class="footer-copy">
-        © {{ new Date().getFullYear() }} {{ personalInfo.name }}. Todos los derechos reservados.
+        © {{ new Date().getFullYear() }} {{ cv.personalInfo.name }}. {{ t('footer.rights') }}
       </p>
       <div class="footer-links">
-        <a :href="personalInfo.linkedin" target="_blank" rel="noopener">LinkedIn</a>
-        <a :href="personalInfo.github" target="_blank" rel="noopener">GitHub</a>
+        <a :href="cv.personalInfo.linkedin" target="_blank" rel="noopener">LinkedIn</a>
+        <a :href="cv.personalInfo.github" target="_blank" rel="noopener">GitHub</a>
       </div>
     </div>
   </footer>

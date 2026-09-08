@@ -1,17 +1,21 @@
 <script setup lang="ts">
-import { skillCategories, softSkills, languages } from '@/data/cv'
+import { useI18n } from 'vue-i18n'
+import { useCv } from '@/composables/useCv'
+
+const { t } = useI18n()
+const cv = useCv()
 </script>
 
 <template>
   <section id="skills" class="skills section">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Habilidades</span>
-        <h2 class="section-title">Tecnologías y competencias</h2>
+        <span class="section-tag">{{ t('skills.tag') }}</span>
+        <h2 class="section-title">{{ t('skills.title') }}</h2>
       </div>
 
       <div class="skills-grid">
-        <div v-for="category in skillCategories" :key="category.name" class="skill-card">
+        <div v-for="category in cv.skillCategories" :key="category.name" class="skill-card">
           <h3 class="skill-category">{{ category.name }}</h3>
           <div class="skill-tags">
             <span v-for="skill in category.skills" :key="skill" class="skill-tag">{{ skill }}</span>
@@ -21,15 +25,15 @@ import { skillCategories, softSkills, languages } from '@/data/cv'
 
       <div class="skills-extra">
         <div class="extra-card">
-          <h3>Habilidades blandas</h3>
+          <h3>{{ t('skills.soft') }}</h3>
           <div class="skill-tags">
-            <span v-for="skill in softSkills" :key="skill" class="skill-tag soft">{{ skill }}</span>
+            <span v-for="skill in cv.softSkills" :key="skill" class="skill-tag soft">{{ skill }}</span>
           </div>
         </div>
         <div class="extra-card">
-          <h3>Idiomas</h3>
+          <h3>{{ t('skills.languages') }}</h3>
           <ul class="language-list">
-            <li v-for="lang in languages" :key="lang.name">
+            <li v-for="lang in cv.languages" :key="lang.name">
               <span class="language-name">{{ lang.name }}</span>
               <span class="language-level">{{ lang.level }}</span>
             </li>

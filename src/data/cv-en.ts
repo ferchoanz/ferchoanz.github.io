@@ -158,11 +158,29 @@ export const education: Education[] = [
 export const skillCategories: SkillCategory[] = [
   {
     name: 'Frontend',
-    skills: ['Vue.js', 'React', 'Angular', 'TypeScript', 'JavaScript', 'Sass', 'Bootstrap', 'Ionic'],
+    skills: [
+      'Vue.js',
+      'React',
+      'Angular',
+      'TypeScript',
+      'JavaScript',
+      'Sass',
+      'Bootstrap',
+      'Ionic',
+    ],
   },
   {
     name: 'Backend',
-    skills: ['Node.js', 'NestJS', 'Laravel', 'PHP', 'Python', 'Express', 'CodeIgniter'],
+    skills: [
+      'Node.js',
+      'NestJS',
+      'Laravel',
+      'PHP',
+      'Python',
+      'Express',
+      'CodeIgniter',
+      'Django REST Framework',
+    ],
   },
   {
     name: 'Databases',
